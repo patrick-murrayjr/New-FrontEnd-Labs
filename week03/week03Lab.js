@@ -264,8 +264,14 @@ function reverse(x) {
    } else if (typeof x === "string") {
       return reverseString(x);
    } else if (Array.isArray(x)) {
-      let tmpArr = x.map((item) => reverseNumber(item));
-      return tmpArr.reverse();
+      if (typeof x[0] === "number") {
+         let tmpArr = x.map((item) => reverseNumber(item));
+         return tmpArr.reverse();
+      }
+      if (typeof x[0] === "string") {
+         let tmpArr = x.map((item) => reverseString(item));
+         return tmpArr.reverse();
+      }
    } else {
       return false;
    }
@@ -273,7 +279,7 @@ function reverse(x) {
       return Number(reverseString(num.toString()));
    }
    function reverseString(str) {
-      return str.split("").reverse().join("");
+      return str.toString().split("").reverse().join("");
    }
 }
 /* ↑ YOUR CODE HERE ↑ */
@@ -283,7 +289,7 @@ console.log(reverse(1234)); //should return 4321
 console.log(reverse("hello")); //should return 'olleh'
 console.log(reverse(true)); //should return false
 console.log(reverse([1, 2, 3, 4])); //should return [4, 3, 2, 1]
-
+console.log(reverse(["hello", "world"]));
 // Question 8: removeElements
 console.log(`--------------------------
 Question 8: removeElements \n`);
