@@ -37,18 +37,16 @@
 /*-------------------------------------------------------*/
 // Question 1: Object Values
 console.log(`--------------------------
-Question 1: Object Values \n`)
+Question 1: Object Values \n`);
 
 // Provided code:
 let person = {
-  firstname: 'Niel',
-  lastname: 'Armstrong',
-  year: 1969,
-  occupation: 'astronaut',
-}
-console.log(
-  `${person.firstname} ${person.lastname} was an ${person.occupation}.`
-)
+   firstname: "Niel",
+   lastname: "Armstrong",
+   year: 1969,
+   occupation: "astronaut",
+};
+console.log(`${person.firstname} ${person.lastname} was an ${person.occupation}.`);
 
 /*
  * Using the person object from above and the given console.log for reference:
@@ -57,26 +55,29 @@ console.log(
  *
  * ↓ YOUR CODE HERE ↓ */
 // "On July 20th 1969, Niel Armstrong was the first person to set foot on the Earth's moon."
-
+//STEP 1
+console.log(
+   `On July 20th ${person.year}, ${person.firstname} ${person.lastname} was the first person to set foot on the Earth's moon.`
+);
 /*-------------------------------------------------------*/
 // Question 2: Instance of a Class
 console.log(`--------------------------
-Question 2: Instance of a Class \n`)
+Question 2: Instance of a Class \n`);
 
 // Provided code:
 class Greeting {
-  constructor(name, place) {
-    this.name = name
-    this.place = place
-  }
+   constructor(name, place) {
+      this.name = name;
+      this.place = place;
+   }
 
-  hello() {
-    console.log(`Hello, ${this.name} from ${this.place}!`)
-  }
+   hello() {
+      console.log(`Hello, ${this.name} from ${this.place}!`);
+   }
 }
 
-let greeting = new Greeting('Jennifer', 'NY')
-greeting.hello()
+let greeting = new Greeting("Jennifer", "NY");
+greeting.hello();
 
 /*
  * Using the provided code above:
@@ -85,22 +86,25 @@ greeting.hello()
  * Step 3: A greeting should print to the console
  *
  * ↓ YOUR CODE HERE ↓ */
-
+//STEP 1
+let myGreeting = new Greeting("Patrick", "PA");
+//STEP 2 -3
+myGreeting.hello();
 /*-------------------------------------------------------*/
 // Question 3: myBook
 console.log(`--------------------------
-Question 3: Instance of a Class \n`)
+Question 3: Instance of a Class \n`);
 
 // Provided code:
 class Book {
-  constructor(title, author) {
-    this.title = title
-    this.author = author
-  }
+   constructor(title, author) {
+      this.title = title;
+      this.author = author;
+   }
 
-  describe() {
-    return `${this.title} was written by ${this.author}.`
-  }
+   describe() {
+      return `"${this.title}" was written by "${this.author}".`;
+   }
 }
 
 /*
@@ -114,11 +118,22 @@ class Book {
  * Step 7: Invoke the describe method for the yourBook instance. Make it print to the console also.
  *
  * ↓ YOUR CODE HERE ↓ */
-
+//STEP 1 - 2
+let myBook = new Book("Pride and Prejudice", "Jane Austen");
+//STEP 3
+console.log(myBook.title);
+//STEP 4
+console.log(myBook.author);
+//STEP 5
+console.log(myBook.describe());
+//STEP 6
+let yourBook = new Book("The Art of War", "Sun Tzu");
+//STEP 7
+console.log(yourBook.describe());
 /*-------------------------------------------------------*/
 // Question 4: Create a Class
 console.log(`--------------------------
-Question 4: Create a Class \n`)
+Question 4: Create a Class \n`);
 
 /*
  * Step 1: Create a Fruit class with a constructor that has the properties of name, color, and taste
@@ -129,40 +144,57 @@ Question 4: Create a Class \n`)
  *
  *
  * ↓ YOUR CODE HERE ↓ */
+//STEP 1 - 2
+class Fruit {
+   constructor(name, color, taste) {
+      this.name = name;
+      this.color = color;
+      this.taste = taste;
+   }
+   describe() {
+      console.log(`A ${this.name} is ${this.color} and has a ${this.taste} taste.`);
+   }
+}
+//STEP 3 - 4
+let fruit1 = new Fruit("lime", "green", "sour");
+let fruit2 = new Fruit("banana", "yellow", "sweet");
 
+//STEP 5
+fruit1.describe();
+fruit2.describe();
 /*-------------------------------------------------------*/
 // Question 5: Inheritance and Polymorphism
 console.log(`--------------------------
-Question 5: Inheritance and Polymorphism \n`)
+Question 5: Inheritance and Polymorphism \n`);
 
 // Look at the provided code below. Notice how Student and Teacher inherit from the Person class through the use of the "extends" and "super" key words. Also, how Student has a redefined details method that is more appropriate than the details method it would have inherited from the Person super class...
 
 class Person {
-  constructor(name, role) {
-    this.name = name
-    this.role = role
-  }
-  introduction() {
-    return `Hi, my name is ${this.name}.`
-  }
-  details() {
-    return `I work as a ${this.role}.`
-  }
+   constructor(name, role) {
+      this.name = name;
+      this.role = role;
+   }
+   introduction() {
+      return `Hi, my name is ${this.name}.`;
+   }
+   details() {
+      return `I work as a ${this.role}.`;
+   }
 }
 
 class Student extends Person {
-  constructor(name, role) {
-    super(name, role)
-  }
-  details() {
-    return `I am a ${this.role}.`
-  }
+   constructor(name, role) {
+      super(name, role);
+   }
+   details() {
+      return `I am a ${this.role}.`;
+   }
 }
 
 class Teacher extends Person {
-  constructor(name, role) {
-    super(name, role)
-  }
+   constructor(name, role) {
+      super(name, role);
+   }
 }
 
 /*
@@ -173,22 +205,29 @@ class Teacher extends Person {
  * Step 4: Call the introduction method on your new teacher instance AND the details method, make sure that the results are printed to the console.
  *
  * ↓ YOUR CODE HERE ↓ */
-
+//STEP 1
+let student = new Student("Jacky", "student");
+//STEP 2
+let teacher = new Teacher("Mr. Bean", "teacher");
+//STEP 3
+console.log(`${student.introduction()} ${student.details()}`);
+//STEP 4
+console.log(`${teacher.introduction()} ${teacher.details()}`);
 /*-------------------------------------------------------*/
 // Question 6: Inheritance
 console.log(`--------------------------
-Question 6: Inheritance \n`)
+Question 6: Inheritance \n`);
 
 // Provided code:
 class Parent {
-  constructor(name, age) {
-    this.name = name
-    this.age = age
-  }
+   constructor(name, age) {
+      this.name = name;
+      this.age = age;
+   }
 
-  details() {
-    console.log(`${this.name} Addams is ${this.age} years old.`)
-  }
+   details() {
+      console.log(`${this.name} Addams is ${this.age} years old.`);
+   }
 }
 
 /*
@@ -199,11 +238,20 @@ class Parent {
  * HINT: You should be using vital key terms like extends and super
  *
  * ↓ YOUR CODE HERE ↓ */
-
+//STEP 1
+class Child extends Parent {
+   constructor(name, age) {
+      super(name, age);
+   }
+}
+//STEP 2
+let child = new Child("Pugsley", 10);
+//STEP 3
+child.details();
 /*-------------------------------------------------------*/
 // Question 7: Put it all together
 console.log(`--------------------------
-Question 7: Put it all together \n`)
+Question 7: Put it all together \n`);
 
 /*
  * Step 1: Create a class called Movie with a constructor that takes in a title and director
@@ -218,5 +266,46 @@ Question 7: Put it all together \n`)
  * Step 10: Display the movies information to the console, using the new instance list
  *
  * ↓ YOUR CODE HERE ↓ */
-
-console.log(`-----------Finished------------`)
+//STEP 1 - 2
+class Movie {
+   constructor(title, director) {
+      this.title = title;
+      this.director = director;
+   }
+   describe() {
+      return `The movie "${this.title}" was directed by "${this.director}".`;
+   }
+}
+// STEP 3 - 5
+class List {
+   constructor() {
+      this.movies = [];
+   }
+   addMovie(movie) {
+      this.movies.push(movie);
+   }
+   displayMovies() {
+      let result = "";
+      for (let i = 0; i < this.movies.length; i++) {
+         result = result + `${this.movies[i].describe()}\n`;
+      }
+      return result;
+   }
+}
+//STEP 6
+let movie1 = new Movie("Jurassic Park", "Steven Spielberg");
+let movie2 = new Movie("How the Grinch stole Christmas", "Ron Howard");
+// STEP 7
+console.log("-Output using Movie.describe() method:\n");
+console.log(movie1.describe());
+//STEP 8
+console.log("-Output using Movie.describe() method:\n");
+console.log(movie2.describe());
+//STEP 9
+let list = new List();
+list.addMovie(movie1);
+list.addMovie(movie2);
+//STEP 10
+console.log("-Output using List.displayMovies() method:\n");
+console.log(list.displayMovies());
+console.log(`-----------Finished------------`);
