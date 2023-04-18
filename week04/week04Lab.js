@@ -64,6 +64,7 @@ Question 2: Template Literals`);
 console.log(
    `My friend ${myFriendsName} said to me, "${myName}, would you like to have ${myFood} and ${myDrink} for lunch?"`
 );
+
 //Question: How would the sentence you wrote look if you used string concatenation instead of template literals?
 //          console.log() your answer to check
 //Answer:
