@@ -278,6 +278,7 @@ function reverse(x) {
    function reverseNumber(num) {
       return Number(reverseString(num.toString()));
    }
+
    function reverseString(str) {
       return str.toString().split("").reverse().join("");
    }
