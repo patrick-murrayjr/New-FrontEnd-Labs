@@ -27,7 +27,7 @@
 
 /*------------------------ Creating a website with only JS ------------------------*/
 console.log(`-------------------------- 
-Part 1: Create a form with only JavaScript`)
+Part 1: Create a form with only JavaScript`);
 
 /** 
  *
@@ -42,13 +42,37 @@ Part 1: Create a form with only JavaScript`)
            Do the same steps, appending a label/input for Email, and a submit button to your form.
  * ↓ YOUR CODE HERE ↓ */
 
-// console.log(myForm)
+let myForm = document.createElement('form');
+let myNameLabel = document.createElement('label');
+let myNameInput = document.createElement('input');
+myNameLabel.innerHTML = 'Name';
+myForm.append(myNameLabel);
+myForm.append(myNameInput);
+document.body.append(myForm);
+
+let myEmailLabel = document.createElement('label');
+myEmailLabel.innerHTML = 'Email';
+let myEmailInput = document.createElement('input');
+myEmailInput.setAttribute('type', 'email');
+let mySubmitButton = document.createElement('button');
+mySubmitButton.innerHTML = 'Submit';
+myForm.append(myEmailLabel);
+myForm.append(myEmailInput);
+myForm.append(mySubmitButton);
+console.log(mySubmitButton);
+console.log(myForm);
+
 //Question: Besides changing the innerHTML, what other HTML things can we change using JavaScript?
 //Answer:
-
+console.log(
+  'Question: Besides changing the innerHTML, what other HTML things can we change using JavaScript?'
+);
+console.log(
+  'Using javascript we can change any attribute of any element, for example the id, class, or style.\n\n'
+);
 /*------------------------ Styling a form with only JavaScript------------------------*/
 console.log(`-------------------------- 
-Part 2: Styling our form with only JavaScript`)
+Part 2: Styling our form with only JavaScript`);
 
 /**
  *  Hint: element.style.cssProperty = ''
@@ -59,13 +83,18 @@ Part 2: Styling our form with only JavaScript`)
  *  Step 3: Give your form a display of flex, a flex-direction of column, and a max-width of 250px
  *
  * ↓ YOUR CODE HERE ↓ */
-
+myForm.style.backgroundColor = '#444';
+myForm.style.color = 'white';
+myForm.style.display = 'flex';
+myForm.style.flexDirection = 'column';
+myForm.style.maxWidth = '250px';
 //Question: Do you prefer styling with JavaScript or CSS?
 //Answer:
-
+console.log('Question: Do you prefer styling with JavaScript or CSS?');
+console.log('I prefer to use CSS but I am comfortable using JavaScript.\n\n');
 /*------------------------ Creating a table with only JavaScript ------------------------*/
 console.log(`-------------------------- 
-Part 3: Creating a table with only JavaScript`)
+Part 3: Creating a table with only JavaScript`);
 
 /*
  * Note: Most of these steps are similar to Part 1.
@@ -79,15 +108,35 @@ Part 3: Creating a table with only JavaScript`)
 
  * Final Step: Style your table using JavaScript starting with a border. You may need to target more element/nodes than we did with myTable.
  * ↓ YOUR CODE HERE ↓ */
+let myTable = document.createElement('table');
+for (let i = 0; i < 2; i++) {
+  let row = document.createElement('tr');
+  let td1 = document.createElement('td');
+  let td2 = document.createElement('td');
+  td1.innerHTML = 'Name';
+  td2.innerHTML = 'Email';
+  td1.style.border = '1px solid black';
+  td2.style.border = '1px solid black';
+  row.appendChild(td1);
+  row.appendChild(td2);
+  myTable.appendChild(row);
+}
+// myTable.getElementsByTagName('tr').style.border = '1px solid black';
+document.body.appendChild(myTable);
 
-// console.log(myTable)
+console.log(myTable);
 //Question: While this is clearly a more round-about way of making a table, how can using JavaScript in this way
 //          more beneficial than HTML?
 //Answer:
-
+console.log(
+  'Question: While this is clearly a more round-about way of making a table, how can using JavaScript in this way more beneficial than HTML?'
+);
+console.log(
+  'It can be more beneficial because you can dynamically create a new table to display your data.\n\n'
+);
 /*------------------------ Changing our body background on click ------------------------*/
 console.log(`-------------------------- 
-Part 4: Changing our background on click`)
+Part 4: Changing our background on click`);
 /**
  * Documentation: https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Building_blocks/Events
  *
@@ -103,12 +152,23 @@ Part 4: Changing our background on click`)
  * Step 7: Click the button in your index.html and see the background change!
  *
  * ↓ YOUR CODE HERE ↓ */
+const myButton = document.getElementById('myButton');
+myButton.addEventListener('click', e => {
+  let r = Math.floor(Math.random() * 256);
+  let g = Math.floor(Math.random() * 256);
+  let b = Math.floor(Math.random() * 256);
+  console.log(`R:${r} G:${g} B:${b}`);
+  document.body.style.backgroundColor = `rgb(${r}, ${g}, ${b})`;
+});
 
 //Question: What other event listeners are there?
 //             Try them out by replacing 'click' in your function above!
 //Answer:
-
-console.log(`-----------Finished------------`)
+console.log('Question: What other event listeners are there?');
+console.log(
+  'There are many other event listeners such as drag, drop, blur doubleclick, scroll. etc...\n\n'
+);
+console.log(`-----------Finished------------`);
 
 /**
  * Extra Project Ideas:
