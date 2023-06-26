@@ -40,16 +40,16 @@
  *
  * ↓ YOUR CODE HERE ↓ */
 
-let div = $('.put-here')
-let input = $('#input-value')
+let div = $('.put-here');
+let input = $('#input-value');
 
 function replaceTextInDiv() {
-  let newText = input.val()
-  div.text(newText)
-  input.val('')
+  let newText = input.val();
+  div.text(newText);
+  input.val('');
 }
 
-console.log($('#input-value').val())
+console.log($('#input-value').val());
 /*------------------------------------------------*/
 // Question 2: Before and After
 
@@ -60,9 +60,9 @@ console.log($('#input-value').val())
  *
  * ↓ YOUR CODE HERE ↓ */
 
-$('.dog').before("<div><img src='images/fish.png' width='200'><div>")
+$('.dog').before("<div><img src='images/fish.png' width='200'><div>");
 
-$('.dog').after("<div><img src='images/cat.png' width='200'><div>")
+$('.dog').after("<div><img src='images/cat.png' width='200'><div>");
 
 /*-------------------------------------------------*/
 // Question 3: Remove
@@ -74,7 +74,7 @@ $('.dog').after("<div><img src='images/cat.png' width='200'><div>")
  *
  * ↓ YOUR CODE HERE ↓ */
 
-$('#lorem2').remove()
+$('#lorem2').remove();
 
 /*-------------------------------------------------*/
 // Question 4: AJAX with JQuery
@@ -82,13 +82,13 @@ $('#lorem2').remove()
 // EXAMPLE:
 // Here is a link to an actual public API for random cat facts.
 // As an option, the url can be saved in a variable as a STRING as shown.
-let CATS_API_URL = 'https://catfact.ninja/fact'
+let CATS_API_URL = 'https://catfact.ninja/fact';
 
 //This is how to make a GET call using AJAX:
-$.get(CATS_API_URL, (data) => {
-  console.log(data)
-  $('.cat-facts').append(`<p> ${data.fact} </p>`)
-})
+$.get(CATS_API_URL, data => {
+  console.log(data);
+  $('.cat-facts').append(`<p> ${data.fact} </p>`);
+});
 
 //Notice there are 3 parts...
 // GET is what we want to do ( 'URL GOES HERE as a STRING' , METHOD/FUNCTION that will do something with the data that is returned goes here);
@@ -103,13 +103,13 @@ $.get(CATS_API_URL, (data) => {
  *
  * ↓ YOUR CODE HERE ↓ */
 
-let JOKES_API_URL = 'https://official-joke-api.appspot.com/random_joke'
+let JOKES_API_URL = 'https://official-joke-api.appspot.com/random_joke';
 
-$.get(JOKES_API_URL, (data) => {
-  console.log(data)
-  $('.jokes').prepend(`<p> ${data.setup} </p>`)
-  $('.jokes').append(`<p> ${data.punchline} </p>`)
-})
+$.get(JOKES_API_URL, data => {
+  console.log(data);
+  $('.jokes').prepend(`<p> ${data.setup} </p>`);
+  $('.jokes').append(`<p> ${data.punchline} </p>`);
+});
 
 /*--------------------------------------------------*/
 
@@ -136,20 +136,20 @@ $.get(JOKES_API_URL, (data) => {
 	*
 	* ↓ YOUR CODE HERE ↓ */
 
-$.get('http://localhost:3000/gradebook', (data) => console.log(data))
+$.get('http://localhost:3000/gradebook', data => console.log(data));
 
-$.get('http://localhost:3000/gradebook/7', (data) => {
-  console.log(data)
+$.get('http://localhost:3000/gradebook/7', data => {
+  console.log(data);
   $('.result').text(
     data.firstname + ' ' + data.lastname + ', Grade: ' + data.grade + '%'
-  )
-})
-$.get('http://localhost:3000/gradebook/12', (data) => {
-  console.log(data)
+  );
+});
+$.get('http://localhost:3000/gradebook/12', data => {
+  console.log(data);
   $('.new').text(
     data.firstname + ' ' + data.lastname + ', Grade: ' + data.grade + '%'
-  )
-})
+  );
+});
 
 /*--------------------------------------------------*/
 // Question 6: POST
@@ -158,16 +158,16 @@ $.get('http://localhost:3000/gradebook/12', (data) => {
 //The function below is triggered by a click event on the BUTTON element with a class name of "test". It will POST (or add) the the values from the inputs to the db.json file. With the HTML file open in the browser and the db.json file open in your IDE, click on the TEST BUTTON to witness the post being added to the data object. Note: the data id will be assigned automatically.
 
 $('.test').on('click', function () {
-  let fname = $('#firstname').val()
-  let lname = $('#lastname').val()
-  let grade = $('#grade').val()
+  let fname = $('#firstname').val();
+  let lname = $('#lastname').val();
+  let grade = $('#grade').val();
 
-  $.postBtn('http://localhost:3000/gradebook', {
+  $.post('http://localhost:3000/gradebook', {
     firstname: fname,
     lastname: lname,
     grade: grade,
-  })
-})
+  });
+});
 /*
  * Step 1: Recreate the POST method from above but instead use the BUTTON with a class name of "postBtn".
  * Step 2: Fill in the inputs with your first name, last name, and give yourself a grade.
@@ -175,5 +175,15 @@ $('.test').on('click', function () {
  *
  *
  * ↓ YOUR CODE HERE ↓ */
+$('.postBtn').on('click', function () {
+  let fname = $('#firstname').val();
+  let lname = $('#lastname').val();
+  let grade = $('#grade').val();
 
+  $.post('http://localhost:3000/gradebook', {
+    firstname: fname,
+    lastname: lname,
+    grade: grade,
+  });
+});
 /*--------------------------------------------------*/

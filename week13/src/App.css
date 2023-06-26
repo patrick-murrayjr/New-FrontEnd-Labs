@@ -1,0 +1,35 @@
+.navBar {
+   width: 100vw;
+   margin-top: 0;
+   background-color: rgb(100, 128, 190);
+   color: whitesmoke;
+   font-size: 1.5rem;
+   padding: 5px;
+}
+
+nav ul {
+   display: flex;
+   flex-direction: row;
+   justify-content: right;
+}
+
+nav ul li {
+   list-style-type: none;
+   margin-right: 0.6em;
+}
+
+nav ul li:hover {
+   color: darkorange;
+}
+
+nav ul li:active {
+   text-decoration: overline;
+}
+
+.welcomeSection {
+   text-align: center;
+   text-transform: uppercase;
+   letter-spacing: 2px;
+   background-color: #eeeeee;
+   padding: 1em;
+}
