@@ -49,10 +49,22 @@
  *
  * Part 1: Create a new const variable called: API_URL , and set it to your URL.
  *
- *         Create 4 functions, getUsers(){}, deleteUser(){}, updateUser(){}, and postNewUser(){}.
+ *        {}.
  */
+/** In your console, type: json-server --watch db.json
+ *         Your console should look something like this:
+ *
+ *         Resources
+ *         http://localhost:3000/studentRoster
+ *
+ *         Above is the URL we'll use for our CRUD operations.
+ *
+ * Below, create a const declaration for your URL endpoint
+ *
+ * ↓ YOUR CODE HERE ↓ */
 
 /*------------------------ Part 1: Setting up GET ------------------------*/
+//#region Part 1
 /*
  *         Setting up getUsers() function:
  *
@@ -68,9 +80,9 @@
  * Step 3: Use the useEffect and getUsers() to re-render our component on change:
  *
  */
-
+//#endregion Part 1
 /*------------------------ Part 2: Setting up DELETE ------------------------*/
-
+//#region Part 2
 /**
  * Reminder: fetch(url, {options})
  *
@@ -82,9 +94,9 @@
  * Step 3: call .then(() => getUsers()) after your fetch() to ensure that our component
  *         gets re-rendered with the updated information.
  */
-
+//#endregion Part 2
 /*------------------------ Part 3: Setting up POST ------------------------*/
-
+//#region Part 3
 /**
  * Step 1: Inside our postNewUser() function, set up fetch() to POST.
  *
@@ -96,9 +108,9 @@
  *
  *         Update the body: {} part of our fetch() to POST with our new variables.
  */
-
+//#endregion Part 3
 /*------------------------ Part 4: Setting up UPDATE ------------------------*/
-
+//#region Part 4
 /** Disclaimer: There are MANY ways to handle UPDATE.
  *              This is only one way. We will be creating a form for each user,
  *              passing in a userObject to our updateUser() function, then updating the user with fetch()
@@ -120,9 +132,9 @@
  *         updatedUserObject should be userObject, with it's updated name/title/company name
  *
  */
-
+//#endregion Part 4
 /*------------------------ Part 5: Connecting All the Pieces ------------------------*/
-
+//#region Part 5
 /**
  * Step 1:  Connecting our GET:
  *
@@ -179,23 +191,144 @@
  *           so they don't initially submit empty strings.
  *
  */
-
+//#endregion Part 5
 /*-- ALL IMPORTS HERE -- */
-import './App.css'
+import './App.css';
+import { useState, useEffect } from 'react';
+const API_URL = 'http://localhost:3004/user';
 
+//  Create 4 functions, getUsers(){}, deleteUser(){}, updateUser(){}, and postNewUser()
 function App() {
-  /* -- YOUR CODE/CRUD OPERATIONS HERE --*/
+   /* -- STATE VARIABLES HERE -- */
+   const [users, setUsers] = useState([{}]);
+   const [newUserName, setNewUserName] = useState('');
+   const [newUserJobTitle, setNewUserJobTitle] = useState('');
+   const [newUserCompanyName, setNewUserCompanyName] = useState('');
+   const [updatedName, setUpdatedName] = useState('');
+   const [updatedJobTitle, setUpdatedJobTitle] = useState('');
+   const [updatedCompanyName, setUpdatedCompanyName] = useState('');
 
-  return (
-    <div className="App">
-      {/* CODE BELOW: PART: 5.3 Connecting our POST */}
+   console.log(users);
+   /* -- YOUR CODE/CRUD OPERATIONS HERE --*/
+   const getUsers = () => {
+      fetch(API_URL)
+         .then(data => data.json())
+         .then(data => setUsers(data));
+   };
 
-      {/* CODE BELOW: PART 5.1: Connecting our GET  //  PART 5.4: Connecting our UPDATE */}
-    </div>
-  )
+   useEffect(() => {
+      getUsers();
+      console.log(users);
+   }, []);
+
+   const deleteUser = id => {
+      fetch(`${API_URL}/${id}`, {
+         method: 'DELETE',
+      }).then(() => getUsers());
+   };
+   const postNewUser = () => {
+      let newUserObject = {
+         name: newUserName,
+         jobTitle: newUserJobTitle,
+         companyName: newUserCompanyName,
+      };
+      fetch(API_URL, {
+         method: 'POST',
+         headers: {
+            'Content-Type': 'application/json',
+         },
+         body: JSON.stringify(newUserObject),
+      }).then(() => getUsers());
+   };
+   const updateUser = userObject => {
+      let updatedUserObject = {
+         ...userObject,
+         name: updatedName,
+         jobTitle: updatedJobTitle,
+         companyName: updatedCompanyName,
+      };
+      fetch(`${API_URL}/${userObject.id}`, {
+         method: 'PUT',
+         headers: {
+            'Content-Type': 'application/json',
+         },
+         body: JSON.stringify(updatedUserObject),
+      }).then(() => getUsers());
+   };
+
+   return (
+      <div className='App'>
+         {/* CODE BELOW: PART: 5.3 Connecting our POST */}
+
+         <form key={'a0'}>
+            <h3>POST New User Form</h3>
+            <label htmlFor='newUserName'>Name</label>
+            <input
+               type='text'
+               id='newUserName'
+               onChange={e => setNewUserName(e.target.value)}
+            />
+            <br />
+            <label htmlFor='newUserJobTitle'>Job Title</label>
+            <input
+               type='text'
+               id='newUserJobTitle'
+               onChange={e => setNewUserJobTitle(e.target.value)}
+            />
+            <br />
+            <label htmlFor='newUserCompanyName'>Company Name</label>
+            <input
+               type='text'
+               id='newUserCompanyName'
+               onChange={e => setNewUserCompanyName(e.target.value)}
+            />
+            <br />
+            <button onClick={e => postNewUser(e)}>Add User</button>
+         </form>
+
+         {/* CODE BELOW: PART 5.1: Connecting our GET  //  PART 5.4: Connecting our UPDATE */}
+         {users.map(user => {
+            return (
+               <div key={user.id}>
+                  <div>
+                     <p>Name: {user.name}</p>
+                     <p>Job title: {user.jobTitle}</p>
+                     <p>Company Name: {user.companyName}</p>
+                  </div>
+                  <button onClick={() => deleteUser(user.id)}>Delete 🗑</button>
+                  <form
+                     onSubmit={e => {
+                        e.preventDefault();
+                        updateUser(user);
+                     }}>
+                     <label htmlFor='updateName'>Update Name</label>
+                     <input
+                        type='text'
+                        id='updateName'
+                        onChange={e => setUpdatedName(e.target.value)}
+                     />
+                     <label htmlFor='updateJobTitle'>Update Job Title</label>
+                     <input
+                        type='text'
+                        id='updateJobTitle'
+                        onChange={e => setUpdatedJobTitle(e.target.value)}
+                     />
+                     <label htmlFor='updateCompanyName'>Update Company Name</label>
+                     <input
+                        type='text'
+                        id='updateCompanyName'
+                        onChange={e => setUpdatedCompanyName(e.target.value)}
+                     />
+                     <button type='submit'>Update User</button>
+                  </form>
+               </div>
+            );
+         })}
+      </div>
+   );
 }
 
-export default App
+export default App;
 
 /**
  *     While this lab focused mostly on functionality over practicality,

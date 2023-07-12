@@ -1,0 +1,34 @@
+{
+   "user": [
+      {
+         "name": "Ora Thiel",
+         "jobTitle": "Waiter",
+         "companyName": "Moretti's of Arlington",
+         "id": 1
+      },
+      {
+         "name": "Tabitha Brown",
+         "jobTitle": "Programmer",
+         "companyName": "IBM",
+         "id": 2
+      },
+      {
+         "name": "Patti Fritsch",
+         "jobTitle": "Fisherman",
+         "companyName": "Gorton's of Gloucester",
+         "id": 3
+      },
+      {
+         "name": "Dr. Tyrone Ziemann II",
+         "jobTitle": "Veterinarian",
+         "companyName": "Dr. Dolittle's Animal Hospital",
+         "id": 4
+      },
+      {
+         "name": "Tammy Kunde",
+         "jobTitle": "Police Officer",
+         "companyName": "Delaware State Police",
+         "id": 5
+      }
+   ]
+}
