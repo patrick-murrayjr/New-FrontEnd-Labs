@@ -5,11 +5,12 @@
    FE Lab Week 16
 */
 
-import React from 'react'
-import {BrowserRouter as Router, Switch, Route, Link} from 'react-router-dom'
+import React from 'react';
+import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 
-import Home from './Components/Home.js'
-import About from './Components/About.js'
+import Home from './Components/Home.js';
+import About from './Components/About.js';
+import Projects from './Components/Projects.js';
 
 /** Instruction:
  *    This is a boiler plate, or a "starting point" for React Router.
@@ -41,23 +42,26 @@ import About from './Components/About.js'
  */
 
 export default function App() {
-  return (
-    // Your entire App.js is the router.
-    <Router>
-      {/* This is your Nav element, that users can see. */}
-      <div>
-        <nav>
-          <ul>
-            <li>
-              <Link to="/">Home</Link>
-            </li>
-            <li>
-              <Link to="/about">About</Link>
-            </li>
-          </ul>
-        </nav>
+   return (
+      // Your entire App.js is the router.
+      <Router>
+         {/* This is your Nav element, that users can see. */}
+         <div>
+            <nav>
+               <ul>
+                  <li>
+                     <Link to='/'>Home</Link>
+                  </li>
+                  <li>
+                     <Link to='/about'>About</Link>
+                  </li>
+                  <li>
+                     <Link to='/projects'>Projects</Link>
+                  </li>
+               </ul>
+            </nav>
 
-        {/* This is the logic that switches each path.
+            {/* This is the logic that switches each path.
           1. Give your Route component a path attribute so users know where they are.
               This is linked directly with "to attribute" on your nav above.
           2. Inside that Route component, render the component you want users
@@ -66,16 +70,18 @@ export default function App() {
             <Component/>
           </Route>  */}
 
-        <Switch>
-          <Route path="/about">
-            <About />
-          </Route>
-
-          <Route path="/">
-            <Home />
-          </Route>
-        </Switch>
-      </div>
-    </Router>
-  )
+            <Switch>
+               <Route path='/projects'>
+                  <Projects />
+               </Route>
+               <Route path='/about'>
+                  <About />
+               </Route>
+               <Route path='/'>
+                  <Home />
+               </Route>
+            </Switch>
+         </div>
+      </Router>
+   );
 }
